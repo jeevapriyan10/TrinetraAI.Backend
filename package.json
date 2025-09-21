@@ -1,0 +1,24 @@
+{
+  "name": "misinformation-detection-app",
+  "version": "1.0.0",
+  "description": "Full-stack misinformation detection application",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run backend:dev\" \"npm run frontend:dev\" \"npm run ml:dev\"",
+    "start": "concurrently \"npm run backend:start\" \"npm run frontend:start\"",
+    "backend:dev": "cd backend && npm run dev",
+    "backend:start": "cd backend && npm start",
+    "frontend:dev": "cd frontend && npm run dev",
+    "frontend:start": "cd frontend && npm run build && npm run preview",
+    "ml:dev": "cd ml_service && python -m uvicorn main:app --reload --port 8001",
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install && cd ../ml_service && pip install -r requirements.txt",
+    "build": "cd frontend && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["misinformation", "detection", "ml", "fullstack"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
