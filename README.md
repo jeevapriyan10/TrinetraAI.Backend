@@ -1,189 +1,56 @@
-# Misinformation Detection App
+# Trinetra AI — Misinformation Detection
 
-A full-stack application for detecting misinformation using machine learning models and AI analysis.
+Trinetra AI is a creative solution brought to the market that produces verifications for AI-created text or other conceivable falsehoods. It supplies a quick and accessible web experience where users can receive the detected verdicts, confidence scores, and topical categories along with graphics of trend and community feedback. It also provides a popular front end **React** for user interactions engaging with an API sandbox for **Gemini-driven analysis**. It includes **MongoDB** as a database to help further users monitor and follow trends and receive feedback from the community.
 
-## Architecture
+---
 
-- **Backend**: Node.js with Express (Port 8000)
-- **ML Service**: Python FastAPI microservice (Port 8001)
-- **Frontend**: React with Vite and Tailwind CSS
-- **Database**: MongoDB
+## What it does
 
-## Features
+- In real-time, it verifies the users' text and provides a sound judgment from the AI system: **Misinformation** or **Reliable**.  
+- The tool features a confidence aspect showing how confident the AI is in the particular decision and assigns a category to indicate the nature of the text.  
+- App keeps the record of objects flagged by users for later auditing, analytics, and continuous improvement through deep learning models.  
+- Community members can vote on particular cases to enhance the visibility of those most interesting under future moderation and help with potential impact.  
+- Those interested in the system's health can use the data model provided to prepare the dashboard for category summaries and insights.  
 
-- Real-time text verification using ML models and Gemini AI
-- Dashboard with misinformation categories and statistics
-- Community upvoting system
-- Responsive and accessible UI
-- Automatic model downloading and setup
+---
 
-## Prerequisites
+## Why it matters
 
-- Node.js (v16 or higher)
-- Python (v3.8 or higher)
-- MongoDB (local or cloud instance)
-- Gemini API key
+- Before users can disseminate the content, it quickly and easily helps in detangling the web of misinformation to make it more trustworthy.  
+- Admins and researchers move several steps ahead in spotting misinformation trends, and now they can track the psyches through themes like **health, politics, and climate**.  
+- This foundation also makes it possible to create **hybrid ML models** that combine LLM reasoning.  
 
-## Quick Start
+---
 
-1. **Clone and install dependencies**:
-   ```bash
-   git clone <repository-url>
-   cd misinformation-detection-app
-   npm run install:all
-   ```
+## Core features
 
-2. **Set up environment variables**:
-   ```bash
-   cp .env.example .env
-   # Edit .env with your configuration
-   ```
+- **Gemini** powers the AI-only decision path for uniform, quick answers with minimal latency.  
+- New users get immediate feedback on the accuracy of the presented statement along with the conclusion, confidence level, category, and explanation, all of this wrapped up in a simple UI.  
+- The storage of **MongoDB** is supported with historical analysis, and the implementation of item searches in dashboards is forged by the metadata.  
+- The **upvote** allows for the community to contribute their discernment by ranking the priority of review.  
+- The application incorporates a number of resilient features, like **fallbacks and error handling**, which are meant to allow users to have the best experience even in the presence of API difficulties.  
 
-3. **Start all services**:
-   ```bash
-   npm run dev
-   ```
+---
 
-This will start:
-- Backend API server on http://localhost:8000
-- ML microservice on http://localhost:8001
-- Frontend development server on http://localhost:5173
+## Technology
 
-## Environment Variables
+- **Frontend:** React, Vite, Tailwind CSS — fast and responsive UI with modular components.  
+- **Backend:** Node.js with Express — API orchestration, validation, and storage.  
+- **AI:** Gemini API — designed for identification of misinformation, outputs structured JSON formats.  
+- **Database:** MongoDB — stores results, categories, confidence, timestamps, and votes.  
+- **Optional ML service:** Future hybrid inference utilizing Python (FastAPI) retained for scaffolding.  
 
-Create a `.env` file in the root directory:
+---
 
-```env
-# MongoDB Configuration
-MONGO_URI=mongodb://localhost:27017
-MONGO_DB_NAME=misinformation_db
+## Roadmap
 
-# Gemini API Configuration
-GEMINI_API_KEY=your_gemini_api_key_here
+- **Hybrid inference:** Mix LLM reasoning with custom classifiers for more accurate results.  
+- **Source/context enrichment:** Citations, claim matching, and relevant fact-checking.  
+- **Role-based dashboards:** Moderator tools, analytics views, and exportable reports.  
+- **Trust signals:** Model lineage, prompt transparency, and evaluation benchmarks.  
 
-# ML Model Configuration (optional)
-MODEL_ZIP_URL=https://example.com/path/to/your/model.zip
+---
 
-# Server Configuration
-PORT=8000
-```
+## Ethics and usage
 
-## API Endpoints
-
-### Backend (Port 8000)
-
-- `POST /api/verify` - Verify text for misinformation
-- `GET /api/dashboard` - Get misinformation statistics
-- `POST /api/upvote` - Upvote misinformation detection
-- `GET /health` - Health check
-
-### ML Service (Port 8001)
-
-- `POST /predict` - Get ML model prediction
-- `GET /health` - Health check
-- `GET /` - Service info
-
-## Project Structure
-
-```
-misinformation-detection-app/
-├── backend/                 # Node.js Express API
-│   ├── server.js           # Main server file
-│   └── package.json        # Backend dependencies
-├── ml_service/             # Python FastAPI microservice
-│   ├── main.py            # ML service main file
-│   └── requirements.txt   # Python dependencies
-├── frontend/              # React frontend
-│   ├── src/
-│   │   ├── components/    # React components
-│   │   ├── App.jsx       # Main app component
-│   │   └── main.jsx      # Entry point
-│   ├── index.html        # HTML template
-│   └── package.json      # Frontend dependencies
-├── .env.example          # Environment variables template
-├── .gitignore           # Git ignore rules
-└── README.md           # This file
-```
-
-## Development
-
-### Running Individual Services
-
-**Backend only**:
-```bash
-npm run backend:dev
-```
-
-**Frontend only**:
-```bash
-npm run frontend:dev
-```
-
-**ML Service only**:
-```bash
-npm run ml:dev
-```
-
-### Building for Production
-
-```bash
-npm run build
-```
-
-## Deployment
-
-### Using Docker (Recommended)
-
-1. Create `Dockerfile` for each service
-2. Use `docker-compose.yml` for orchestration
-3. Deploy to your preferred cloud platform
-
-### Manual Deployment
-
-1. **Backend**: Deploy to Render, Railway, or similar Node.js hosting
-2. **ML Service**: Deploy to platforms supporting Python (Render, Railway, etc.)
-3. **Frontend**: Build and deploy to Netlify, Vercel, or similar static hosting
-4. **Database**: Use MongoDB Atlas or similar cloud database
-
-### Environment Setup for Production
-
-- Set all environment variables in your deployment platform
-- Ensure MongoDB is accessible from your backend
-- Configure CORS settings for production domains
-- Set up proper logging and monitoring
-
-## Model Integration
-
-The application supports custom ML models:
-
-1. Train your misinformation detection model
-2. Export as a zip file containing model files
-3. Host the zip file on a public URL
-4. Set `MODEL_ZIP_URL` in your environment variables
-5. The application will automatically download and extract the model
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-## License
-
-MIT License - see LICENSE file for details
-
-## Support
-
-For issues and questions:
-1. Check the GitHub issues
-2. Create a new issue with detailed description
-3. Include logs and environment details
-
-## Security
-
-- Never commit API keys or sensitive data
-- Use environment variables for all secrets
-- Regularly update dependencies
-- Follow security best practices for production deployment
+Trinetra AI is an assistive tool, not the final decider of truth. Always verify with multiple trusted sources and include human oversight when it comes to crucial info.
