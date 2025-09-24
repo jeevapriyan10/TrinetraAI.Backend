@@ -98,7 +98,7 @@ const callMLService = async (text) => {
 const callGeminiAPI = async (text) => {
   try {
     const response = await axios.post(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyCS2SYbRX9brAwnCW8WTJn_xk8KFrbcAZg`,
       {
         contents: [
           {
