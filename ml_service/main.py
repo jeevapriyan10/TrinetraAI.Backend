@@ -71,7 +71,7 @@ def load_model():
         tokenizer = None
         model = None
 
-# Keep original ML prediction method intact, but won't use it for now
+
 def predict_misinformation(text: str) -> dict:
     if model is None or tokenizer is None:
         return {
@@ -111,7 +111,7 @@ def predict_misinformation(text: str) -> dict:
             "explanation": f"Error during prediction: {str(e)}"
         }
 
-# New helper function to call Gemini API only
+
 async def call_gemini_api(text: str) -> dict:
     api_key = os.getenv("GEMINI_API_KEY")
     if not api_key:
@@ -169,7 +169,7 @@ async def root():
 async def health_check():
     return {"status": "healthy", "model_loaded": model is not None}
 
-# Modified predict endpoint to call Gemini API only
+
 @app.post("/predict", response_model=PredictionResponse)
 async def predict(request: PredictionRequest):
     if not request.text.strip():

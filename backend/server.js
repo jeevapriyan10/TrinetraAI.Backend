@@ -23,9 +23,9 @@ const connectDB = async () => {
     const client = new MongoClient(process.env.MONGO_URI);
     await client.connect();
     db = client.db(process.env.MONGO_DB_NAME);
-    console.log('✅ Connected to MongoDB');
+    console.log('Connected to MongoDB');
   } catch (error) {
-    console.error('❌ MongoDB connection error:', error.message);
+    console.error('MongoDB connection error:', error.message);
   }
 };
 
@@ -35,12 +35,12 @@ const setupModel = async () => {
   const modelZipPath = path.join(__dirname, 'model.zip');
 
   if (!fs.existsSync(modelDir)) {
-    console.log('📦 Model directory not found. Downloading model...');
+    console.log('Model directory not found. Downloading model...');
 
     try {
       const modelUrl = process.env.MODEL_ZIP_URL;
       if (!modelUrl) {
-        console.log('⚠️ MODEL_ZIP_URL not configured, skipping model download');
+        console.log('MODEL_ZIP_URL not configured, skipping model download');
         return;
       }
 
@@ -72,13 +72,13 @@ const setupModel = async () => {
 
           zipfile.on('end', () => {
             fs.unlinkSync(modelZipPath);
-            console.log('✅ Model extracted successfully');
+            console.log('Model extracted successfully');
             resolve();
           });
         });
       });
     } catch (error) {
-      console.error('❌ Error setting up model:', error.message);
+      console.error('Error setting up model:', error.message);
     }
   }
 };
@@ -89,7 +89,7 @@ const callMLService = async (text) => {
     await axios.post('http://localhost:8001/predict', { text }, { timeout: 5000 });
     return null;
   } catch (error) {
-    console.log('⚠️ ML microservice not available:', error.message);
+    console.log('ML microservice not available:', error.message);
     return null;
   }
 };
@@ -166,7 +166,7 @@ app.post('/api/verify', async (req, res) => {
       category
     });
   } catch (error) {
-    console.error('❌ Verification error:', error.message);
+    console.error('Verification error:', error.message);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
@@ -194,7 +194,7 @@ app.get('/api/dashboard', async (req, res) => {
 
     res.json(categorySummary);
   } catch (error) {
-    console.error('❌ Dashboard error:', error.message);
+    console.error('Dashboard error:', error.message);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
@@ -215,7 +215,7 @@ app.post('/api/upvote', async (req, res) => {
 
     res.json({ success: true });
   } catch (error) {
-    console.error('❌ Upvote error:', error.message);
+    console.error('Upvote error:', error.message);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
@@ -230,7 +230,7 @@ const startServer = async () => {
   await setupModel();
 
   app.listen(PORT, () => {
-    console.log(`🚀 Backend server running on port ${PORT}`);
+    console.log(`Backend server running on port ${PORT}`);
   });
 };
 
