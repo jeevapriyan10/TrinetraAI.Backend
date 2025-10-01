@@ -54,3 +54,16 @@ Trinetra AI is a creative solution brought to the market that produces verificat
 ## Ethics and usage
 
 Trinetra AI is an assistive tool, not the final decider of truth. Always verify with multiple trusted sources and include human oversight when it comes to crucial info.
+
+---
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## Acknowledgements
+
+- Inspired by popular mininformation detectors and classifiers.
+- Thanks to all contributors and the open-source community.
+
+---
+**Maintainer:** [jeevapriyan10](https://github.com/jeevapriyan10)
